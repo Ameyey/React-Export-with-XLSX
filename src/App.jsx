@@ -3,24 +3,33 @@ import  { ExportToExcel } from './excelFile.jsx'
 
 function App() {
 
-  const [userData , setUserpost] = useState([]);
-  
+  const [ProductData , setProductrpost] = useState([]);
+  const [UserDate, setUserpost] = useState([]);
+  // product Api 
   useEffect(()=>{
 
     fetch('https://jsonplaceholder.typicode.com/albums')
       .then(response => response.json())
       .then(json => {
         console.log(json),
+        setProductrpost(json)
+  });
+
+  // User Api 
+  fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => response.json())
+      .then(json => {
+        console.log(json),
         setUserpost(json)
-  })
-      },[])
+
+      })
 
   
-  
+    },[])
    
   return (
     <div>
-    <ExportToExcel userDetail={userData}  />
+    <ExportToExcel userDetail={ProductData}  />
     </div>
   )
 }
