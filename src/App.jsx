@@ -1,11 +1,27 @@
+import { useEffect, useState } from 'react'
+import  { ExportToExcel } from './excelFile.jsx'
 
 function App() {
- 
 
+  const [userData , setUserpost] = useState([]);
+  
+  useEffect(()=>{
+
+    fetch('https://jsonplaceholder.typicode.com/albums')
+      .then(response => response.json())
+      .then(json => {
+        console.log(json),
+        setUserpost(json)
+  })
+      },[])
+
+  
+  
+   
   return (
-    <>
-    <h1>asd</h1>
-    </>
+    <div>
+    <ExportToExcel userDetail={userData}  />
+    </div>
   )
 }
 
