@@ -4,7 +4,7 @@ import  { ExportToExcel } from './excelFile.jsx'
 function App() {
 
   const [ProductData , setProductrpost] = useState([]);
-  const [UserDate, setUserpost] = useState([]);
+  const [user, setUserpost] = useState([]);
   // product Api 
   useEffect(()=>{
 
@@ -26,10 +26,10 @@ function App() {
 
   
     },[])
-   
+  
   return (
     <div>
-    <ExportToExcel userDetail={ProductData}  />
+    <ExportToExcel ProductData={ProductData} user={user}  />
     </div>
   )
 }
